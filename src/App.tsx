@@ -8,8 +8,8 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <Header/>
-      <Profile/>
+      <Header />
+      <Profile />
     </ThemeProvider>
   )
 }
