@@ -1,5 +1,12 @@
+import { Post } from '../Post'
 import { SearchBar } from '../SearchBar'
-import { PublicationsContent, Pubs, Title, TitleContent } from './styles'
+import {
+  PostsContent,
+  PublicationsContent,
+  Pubs,
+  Title,
+  TitleContent,
+} from './styles'
 
 export function Publications() {
   return (
@@ -9,6 +16,14 @@ export function Publications() {
         <Pubs>6 Publicações</Pubs>
       </TitleContent>
       <SearchBar />
+      <PostsContent>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </PostsContent>
     </PublicationsContent>
   )
 }
