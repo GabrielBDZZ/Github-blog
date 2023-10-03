@@ -26,10 +26,10 @@ export function Profile() {
         </ProfileSocial>
         <ProfileSocial
           target="_blank"
-          href="https://app.rocketseat.com.br/me/gabrielbdzz"
+          href="https://www.linkedin.com/in/gabriel-bondezan-amianti-44b54419b/"
         >
           <Buildings size={18} weight="fill" />
-          Rocketseat
+          Center Informática
         </ProfileSocial>
         <ProfileSocial>
           <Users size={18} weight="fill" />

@@ -1,4 +1,4 @@
-import { Post } from '../Post'
+import { Publication } from '../Publication'
 import { SearchBar } from '../SearchBar'
 import {
   PostsContent,
@@ -17,12 +17,12 @@ export function Publications() {
       </TitleContent>
       <SearchBar />
       <PostsContent>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Publication />
+        <Publication />
+        <Publication />
+        <Publication />
+        <Publication />
+        <Publication />
       </PostsContent>
     </PublicationsContent>
   )
