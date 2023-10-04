@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   ProfileAbout,
   ProfileContainer,
@@ -6,34 +7,55 @@ import {
   ProfilePic,
   ProfileSocial,
 } from './styles'
-import Logo from '../../assets/Logo.svg'
 import { Buildings, GithubLogo, Users } from '@phosphor-icons/react'
 
+interface UserData {
+  name: string
+  bio: string
+  avatar_url: string
+  login: string
+  followers: string
+  company: string
+  url: string
+}
+
 export function Profile() {
+  const [userData, setUserData] = useState<UserData | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('https://api.github.com/users/GabrielBDZZ')
+        const data = await res.json()
+        setUserData(data)
+      } catch (error) {
+        console.error('Erro ao buscar os dados do usuário', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <ProfileContainer>
-      <ProfilePic src={Logo} />
+      <ProfilePic src={userData ? userData.avatar_url : 'Carregando...'} />
       <ProfileAbout>
-        <ProfileName>Gabriel Bondezan</ProfileName>
-        <ProfileDesc>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          dolorem consequuntur tempora reiciendis eveniet nesciunt iste quasi
-          voluptatum!
-        </ProfileDesc>
-        <ProfileSocial target="_blank" href="https://github.com/GabrielBDZZ">
-          <GithubLogo size={18} weight="fill" />
-          gabrielbdzz
-        </ProfileSocial>
+        <ProfileName>{userData ? userData.name : 'Carregando...'}</ProfileName>
+        <ProfileDesc>{userData ? userData.bio : 'Carregando...'}</ProfileDesc>
         <ProfileSocial
           target="_blank"
-          href="https://www.linkedin.com/in/gabriel-bondezan-amianti-44b54419b/"
+          href={userData ? userData.url : 'Carregando...'}
         >
+          <GithubLogo size={18} weight="fill" />
+          {userData ? userData.login : 'Carregando...'}
+        </ProfileSocial>
+        <ProfileSocial>
           <Buildings size={18} weight="fill" />
-          Center Informática
+          {userData ? userData.company : 'Carregando...'}
         </ProfileSocial>
         <ProfileSocial>
           <Users size={18} weight="fill" />
-          32 Seguidores
+          {userData ? userData.followers : 'Carregando...'} Seguidores
         </ProfileSocial>
       </ProfileAbout>
     </ProfileContainer>
