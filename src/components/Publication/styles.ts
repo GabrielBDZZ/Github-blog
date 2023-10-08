@@ -18,7 +18,7 @@ export const PostContent = styled.div`
   margin: 16px 0;
 
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
 
   border-radius: 10px;
   background: ${(props) => props.theme['base-post']};
@@ -26,10 +26,13 @@ export const PostContent = styled.div`
 
   div {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
   }
 
   h1 {
     width: 283px;
+    margin-bottom: 20px;
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 160%;

@@ -8,6 +8,7 @@ import {
   ProfileSocial,
 } from './styles'
 import { Buildings, GithubLogo, Users } from '@phosphor-icons/react'
+import axios from 'axios'
 
 interface UserData {
   name: string
@@ -25,9 +26,10 @@ export function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://api.github.com/users/GabrielBDZZ')
-        const data = await res.json()
-        setUserData(data)
+        const response = await axios.get(
+          'https://api.github.com/users/GabrielBDZZ',
+        )
+        setUserData(response.data)
       } catch (error) {
         console.error('Erro ao buscar os dados do usuário', error)
       }
