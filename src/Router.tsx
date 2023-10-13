@@ -2,11 +2,11 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Post } from './pages/Post'
 
-export function Router() {
+export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/post" element={<Post />} />
+      <Route path="/post/:id" element={<Post />} />
     </Routes>
   )
 }

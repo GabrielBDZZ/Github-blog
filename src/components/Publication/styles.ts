@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
-import { NavLink } from 'react-router-dom'
 
-export const NavLinkContent = styled(NavLink)`
+export const NavLinkContent = styled.div`
   text-decoration: none;
 
   color: ${(props) => props.theme['base-span']};

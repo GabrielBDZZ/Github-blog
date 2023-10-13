@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  background-image: linear-gradient(${(props) => props.theme['base-profile']}, ${props => props.theme['base-post']});
+  background-image: linear-gradient(
+    ${(props) => props.theme['base-profile']},
+    ${(props) => props.theme['base-post']}
+  );
   height: 18.5rem;
   display: flex;
   justify-content: space-between;
@@ -9,7 +12,6 @@ export const HeaderContainer = styled.header`
   img {
     width: 22rem;
   }
-
 `
 
 export const HeaderContent = styled.div`
@@ -24,5 +26,6 @@ export const HeaderContent = styled.div`
 
   img {
     width: 9.25rem;
+    cursor: pointer;
   }
 `

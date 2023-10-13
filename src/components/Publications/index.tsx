@@ -11,7 +11,7 @@ import {
 import axios from 'axios'
 
 interface PostProps {
-  id: number
+  number: number
   title: string
   created_at: string
   body: string
@@ -46,7 +46,7 @@ export function Publications() {
       <SearchBar />
       <PostsContent>
         {issues.map((issue) => (
-          <Publication key={issue.id} issue={issue} />
+          <Publication key={issue.number} issue={issue} />
         ))}
       </PostsContent>
     </PublicationsContent>

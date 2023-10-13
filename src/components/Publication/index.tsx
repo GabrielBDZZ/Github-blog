@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { NavLinkContent, PostContent, TitleContent } from './styles'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { formatRelativeDate } from '../../utils/formatter'
 
 interface PostProps {
-  id: number
+  number: number
   title: string
   created_at: string
   body: string
@@ -15,6 +16,12 @@ interface PublicationProps {
 }
 
 export function Publication({ issue }: PublicationProps) {
+  const history = useNavigate()
+
+  const handleClick = () => {
+    history(`/post/${issue.number}`)
+  }
+
   const [postData, setPostData] = useState<PostProps | null>(null)
 
   useEffect(() => {
@@ -37,7 +44,7 @@ export function Publication({ issue }: PublicationProps) {
   }, [])
 
   return (
-    <NavLinkContent to="/post" title="Post">
+    <NavLinkContent onClick={handleClick} title="Post">
       <PostContent>
         {postData ? (
           <div>
