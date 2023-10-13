@@ -18,20 +18,15 @@ export const PostContent = styled.div`
   margin: 16px 0;
 
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
 
   border-radius: 10px;
   background: ${(props) => props.theme['base-post']};
   cursor: pointer;
 
-  div {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
-
   h1 {
-    width: 283px;
+    width: 280px;
     margin-bottom: 20px;
     font-size: 1.25rem;
     font-weight: 700;
@@ -40,8 +35,12 @@ export const PostContent = styled.div`
   }
 
   span {
+    margin-left: 15px;
+    width: 60px;
     font-size: 0.875rem;
-    line-height: 160%;
-    margin-left: 16px;
   }
+`
+
+export const TitleContent = styled.div`
+  display: flex;
 `

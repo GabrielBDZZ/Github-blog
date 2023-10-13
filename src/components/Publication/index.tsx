@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLinkContent, PostContent } from './styles'
+import { NavLinkContent, PostContent, TitleContent } from './styles'
 import axios from 'axios'
 import { formatRelativeDate } from '../../utils/formatter'
 
@@ -41,11 +41,11 @@ export function Publication({ issue }: PublicationProps) {
       <PostContent>
         {postData ? (
           <div>
-            <h1>{issue.title}</h1>
-            <span>{formatRelativeDate(issue.created_at)} </span>
-            <div>
-              <p>{issue.body}</p>
-            </div>
+            <TitleContent>
+              <h1>{issue.title}</h1>
+              <span>{formatRelativeDate(issue.created_at)} </span>
+            </TitleContent>
+            <p>{issue.body}</p>
           </div>
         ) : (
           <div>
