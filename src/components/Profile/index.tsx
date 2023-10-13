@@ -6,8 +6,10 @@ import {
   ProfileName,
   ProfilePic,
   ProfileSocial,
+  TitleContainer,
+  GithubProfile,
 } from './styles'
-import { Buildings, GithubLogo, Users } from '@phosphor-icons/react'
+import { Buildings, GithubLogo, LinkSimple, Users } from '@phosphor-icons/react'
 import axios from 'axios'
 
 interface UserData {
@@ -17,7 +19,7 @@ interface UserData {
   login: string
   followers: string
   company: string
-  url: string
+  html_url: string
 }
 
 export function Profile() {
@@ -42,23 +44,33 @@ export function Profile() {
     <ProfileContainer>
       <ProfilePic src={userData ? userData.avatar_url : 'Carregando...'} />
       <ProfileAbout>
-        <ProfileName>{userData ? userData.name : 'Carregando...'}</ProfileName>
+        <TitleContainer>
+          <ProfileName>
+            {userData ? userData.name : 'Carregando...'}
+          </ProfileName>
+          <GithubProfile
+            href={userData ? userData.html_url : 'Carregando...'}
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB <LinkSimple size={12} />
+          </GithubProfile>
+        </TitleContainer>
         <ProfileDesc>{userData ? userData.bio : 'Carregando...'}</ProfileDesc>
-        <ProfileSocial
-          target="_blank"
-          href={userData ? userData.url : 'Carregando...'}
-        >
-          <GithubLogo size={18} weight="fill" />
-          {userData ? userData.login : 'Carregando...'}
-        </ProfileSocial>
-        <ProfileSocial>
-          <Buildings size={18} weight="fill" />
-          {userData ? userData.company : 'Carregando...'}
-        </ProfileSocial>
-        <ProfileSocial>
-          <Users size={18} weight="fill" />
-          {userData ? userData.followers : 'Carregando...'} Seguidores
-        </ProfileSocial>
+        <div>
+          <ProfileSocial>
+            <GithubLogo size={18} weight="fill" />
+            {userData ? userData.login : 'Carregando...'}
+          </ProfileSocial>
+          <ProfileSocial>
+            <Buildings size={18} weight="fill" />
+            {userData ? userData.company : 'Carregando...'}
+          </ProfileSocial>
+          <ProfileSocial>
+            <Users size={18} weight="fill" />
+            {userData ? userData.followers : 'Carregando...'} Seguidores
+          </ProfileSocial>
+        </div>
       </ProfileAbout>
     </ProfileContainer>
   )

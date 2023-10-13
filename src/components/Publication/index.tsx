@@ -36,8 +36,6 @@ export function Publication({ issue }: PublicationProps) {
     fetchData()
   }, [])
 
-  console.log(postData)
-
   return (
     <NavLinkContent to="/post" title="Post">
       <PostContent>

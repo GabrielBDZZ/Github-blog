@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const ProfileContainer = styled.div`
-  height: 13.25rem;
   width: 54rem;
   border-radius: 10px;
 
@@ -26,12 +25,28 @@ export const ProfilePic = styled.img`
 
 export const ProfileAbout = styled.div`
   margin: 0 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const ProfileName = styled.h1`
   font-size: 1.5rem;
   margin: 8px 0;
   color: ${(props) => props.theme['base-title']};
+`
+
+export const TitleContainer = styled.div`
+  width: 38rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const GithubProfile = styled.a`
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: ${(props) => props.theme.blue};
 `
 
 export const ProfileDesc = styled.p`
@@ -42,13 +57,11 @@ export const ProfileDesc = styled.p`
   margin-bottom: 24px;
 `
 
-export const ProfileSocial = styled.a`
+export const ProfileSocial = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
   margin-right: 30px;
-  text-decoration: none;
   color: ${(props) => props.theme['base-text']};
 
   :first-child {
