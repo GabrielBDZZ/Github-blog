@@ -1,5 +1,15 @@
 import { InputSearch } from './styles'
 
-export function SearchBar() {
-  return <InputSearch placeholder="Buscar conteúdo" />
+interface SearchBarProps {
+  setSearchQuery: (query: string) => void
+}
+
+export function SearchBar({ setSearchQuery }: SearchBarProps) {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value)
+  }
+
+  return (
+    <InputSearch placeholder="Buscar conteúdo" onChange={handleInputChange} />
+  )
 }

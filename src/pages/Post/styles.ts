@@ -13,16 +13,16 @@ export const PostContainer = styled.div`
   margin-top: -100px;
   position: relative;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+`
 
-  div {
-    display: flex;
-    justify-content: space-between;
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
 
-    a {
-      text-decoration: none;
-      color: ${(props) => props.theme.blue};
-      font-size: 0.75rem;
-    }
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.blue};
+    font-size: 0.75rem;
   }
 `
 
@@ -42,6 +42,12 @@ export const PostData = styled.span`
   :first-child {
     color: ${(props) => props.theme['base-label']};
   }
+`
+
+export const DataContent = styled.div`
+  display: flex;
+  align-items: end;
+  height: 55px;
 `
 
 export const PostTextContent = styled.div`

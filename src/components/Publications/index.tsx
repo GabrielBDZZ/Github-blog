@@ -20,6 +20,8 @@ interface PostProps {
 export function Publications() {
   const [issues, setIssues] = useState<PostProps[]>([])
   const [issueCount, setIssueCount] = useState(0)
+  const [filtredIssues, setFiltredIssues] = useState<PostProps[]>([])
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -37,15 +39,27 @@ export function Publications() {
     fetchIssues()
   }, [])
 
+  useEffect(() => {
+    const filterIssues = () => {
+      const filtered = issues.filter((issue) => {
+        return issue.title
+          .toLocaleLowerCase()
+          .includes(searchQuery.toLocaleLowerCase())
+      })
+      setFiltredIssues(filtered)
+    }
+    filterIssues()
+  }, [searchQuery, issues])
+
   return (
     <PublicationsContent>
       <TitleContent>
         <Title>Publicações</Title>
         <Pubs>{`${issueCount} Publicações`}</Pubs>
       </TitleContent>
-      <SearchBar />
+      <SearchBar setSearchQuery={setSearchQuery} />
       <PostsContent>
-        {issues.map((issue) => (
+        {filtredIssues.map((issue) => (
           <Publication key={issue.number} issue={issue} />
         ))}
       </PostsContent>

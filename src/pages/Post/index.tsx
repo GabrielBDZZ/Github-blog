@@ -5,19 +5,38 @@ import {
   GithubLogo,
   LinkSimple,
 } from '@phosphor-icons/react'
-import { PostContainer, PostData, PostTextContent, PostTitle } from './styles'
+import {
+  DataContent,
+  Header,
+  PostContainer,
+  PostData,
+  PostTextContent,
+  PostTitle,
+} from './styles'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { formatRelativeDate } from '../../utils/formatter'
 
+interface PostData {
+  title: string
+  html_url: string
+  user: {
+    login: string
+  }
+  created_at: string
+  comments: string
+  body: string
+}
+
 interface RouteParams {
   id: string
+  [key: string]: string | undefined
 }
 
 export function Post() {
   const { id } = useParams<RouteParams>()
-  const [postData, setPostData] = useState<any>(null)
+  const [postData, setPostData] = useState<PostData | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +56,7 @@ export function Post() {
   return (
     <>
       <PostContainer>
-        <div>
+        <Header>
           <a href="/" rel="noreferrer">
             <ArrowArcLeft size={12} /> VOLTAR
           </a>
@@ -48,20 +67,24 @@ export function Post() {
           >
             VER NO GITHUB <LinkSimple size={12} />
           </a>
-        </div>
+        </Header>
         <PostTitle>{postData ? postData.title : 'Carregando...'}</PostTitle>
-        <PostData>
-          <GithubLogo size={18} weight="fill" />
-          {postData ? postData.user.login : 'Carregando...'}
-        </PostData>
-        <PostData>
-          <Calendar size={18} weight="fill" />
-          {postData ? formatRelativeDate(postData.created_at) : 'Carregando...'}
-        </PostData>
-        <PostData>
-          <ChatCircleDots size={18} weight="fill" />
-          {postData ? postData.comments : 'Carregando...'} Comentários
-        </PostData>
+        <DataContent>
+          <PostData>
+            <GithubLogo size={18} weight="fill" />
+            {postData ? postData.user.login : 'Carregando...'}
+          </PostData>
+          <PostData>
+            <Calendar size={18} weight="fill" />
+            {postData
+              ? formatRelativeDate(postData.created_at)
+              : 'Carregando...'}
+          </PostData>
+          <PostData>
+            <ChatCircleDots size={18} weight="fill" />
+            {postData ? postData.comments : 'Carregando...'} Comentários
+          </PostData>
+        </DataContent>
       </PostContainer>
       <PostTextContent>
         <p>{postData ? postData.body : 'Carregando...'}</p>
